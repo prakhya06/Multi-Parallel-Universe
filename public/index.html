@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Multi Parallel Universe</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>Multi Parallel Universe</h1>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-6">
+                <label for="familyNumber">Family</label>
+                <input id="familyNumber" class="form-control" type="text" placeholder="">
+                <label for="universeNumber">Universe</label>
+                <input id="universeNumber" class="form-control" type="number" placeholder="">
+                <label for="power">Power</label>
+                <input id="power" class="form-control" type="text" placeholder="">
+                <button class="btn btn-success">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            
+            axios.get("api/all").then(response => 
+                response.data.forEach(item => $("#items")
+                    .append(`<p>${item.id}  -----  ${item.universe}  ----------  ${item.family}   ------  ${item.power}</p>`))
+            );
+            $(".btn-success").click(function () {
+                axios.post("api/new", {
+                    family: $("#familyNumber").val(),
+                    universe: $("#universeNumber").val(),
+                    power: $("#power").val()
+                }).then(response => $("#items").append(`<p>${response.data.id}  -----  ${response.data.universe}  ----------  ${response.data.family}   ------  ${response.data.power}</p>`)
+                ).then(() => alert("Added new person"));
+            });
+        });
+    </script>
+</body>
+
+</html>

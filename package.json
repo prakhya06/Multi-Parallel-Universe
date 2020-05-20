@@ -1,0 +1,34 @@
+{
+  "name": "crudslist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkTechson/crudslist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkTechson/crudslist/issues"
+  },
+  "homepage": "https://github.com/MarkTechson/crudslist#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.3",
+    "express": "^4.15.4",
+    "fast-csv": "^2.4.1",
+    "mysql2": "^1.4.1",
+    "pg": "^7.8.2",
+    "sequelize": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
